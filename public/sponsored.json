@@ -1,0 +1,92 @@
+[
+  {
+    "image": "https://img.freepik.com/free-photo/beautiful_1203-2633.jpg?semt=ais_se_enriched&w=740&q=80",
+    "ticketTitle": "Coastal Luxury Bus Tour",
+    "pricePerUnit": 45,
+    "ticketQuantity": 60,
+    "transportType": "bus",
+    "perks": [
+      "AC Coach",
+      "Window Seat Priority",
+      "On-board Snacks",
+      "Professional Guide"
+    ],
+    "approvedBy": "admin",
+    "route": "Dhaka → Chittagong"
+  },
+  {
+    "image": "https://media.istockphoto.com/id/1366027192/photo/beautiful-caribbean-sea-and-blue-sky-travel-background.jpg?s=612x612&w=0&k=20&c=HLCx2KjDwOPul-j117AH1-9EtTKt_3RhVh-pynVm8PM=",
+    "ticketTitle": "Caribbean Island Cruise",
+    "pricePerUnit": 120,
+    "ticketQuantity": 40,
+    "transportType": "ship",
+    "perks": [
+      "Open Deck Access",
+      "Free Welcome Drink",
+      "Life Jacket Included",
+      "Photo Spot Guide"
+    ],
+    "approvedBy": "admin",
+    "route": "Chittagong → Saint Martin"
+  },
+  {
+    "image": "https://thumbs.dreamstime.com/b/ocean-beach-sunrise-colorful-75364306.jpg",
+    "ticketTitle": "Sunrise Express Train Ride",
+    "pricePerUnit": 35,
+    "ticketQuantity": 120,
+    "transportType": "train",
+    "perks": [
+      "Reclining Seats",
+      "Charging Port",
+      "Complimentary Tea",
+      "Scenic Route"
+    ],
+    "approvedBy": "admin",
+    "route": "Dhaka → Rajshahi"
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJlYWNofGVufDB8fDB8fHww",
+    "ticketTitle": "Skyview Beachside Flight",
+    "pricePerUnit": 210,
+    "ticketQuantity": 25,
+    "transportType": "plane",
+    "perks": [
+      "Priority Boarding",
+      "Window Seat Guaranteed",
+      "In-Flight Snack",
+      "20kg Luggage Included"
+    ],
+    "approvedBy": "admin",
+    "route": "Dhaka → Cox's Bazar"
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/beautiful_1203-2633.jpg?semt=ais_se_enriched&w=740&q=80",
+    "ticketTitle": "Mountain Highway Bus Trip",
+    "pricePerUnit": 38,
+    "ticketQuantity": 80,
+    "transportType": "bus",
+    "perks": [
+      "Live Travel Commentary",
+      "Comfort Seats",
+      "Panoramic Windows",
+      "Free Water Bottle"
+    ],
+    "approvedBy": "admin",
+    "route": "Dhaka → Sylhet"
+  },
+  {
+    "image": "https://media.istockphoto.com/id/1366027192/photo/beautiful-caribbean-sea-and-blue-sky-travel-background.jpg?s=612x612&w=0&k=20&c=HLCx2KjDwOPul-j117AH1-9EtTKt_3RhVh-pynVm8PM=",
+    "ticketTitle": "Blue Horizon Sea Tour",
+    "pricePerUnit": 95,
+    "ticketQuantity": 55,
+    "transportType": "ship",
+    "perks": [
+      "Deck Buffet",
+      "Coastline Views",
+      "Crew Assistance",
+      "Onboard Entertainment"
+    ],
+    "approvedBy": "admin",
+    "route": "Khulna → Sundarbans"
+  }
+]

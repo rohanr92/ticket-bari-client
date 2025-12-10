@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import "tailwindcss";
+@plugin "daisyui"{
+  themes: light --default;
+}
+
+@plugin "daisyui/theme" {
+  name: "mytheme";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-base-100: #ffffff;
+  --color-base-content: #181a1f;
+  --color-primary: #181a1f;
+  --color-primary-content: #181a1f;  
+}
+
+
+
+
+body {
+    font-family: 'DM Sans', sans-serif;
+}
+
