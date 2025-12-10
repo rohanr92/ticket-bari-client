@@ -9,8 +9,9 @@ const Root = () => {
             <Navbar></Navbar>
             <section className='min-h-screen'>
             <Outlet></Outlet>
+             </section>
             <Footer></Footer>
-            </section>
+           
             
         </div>
     );
