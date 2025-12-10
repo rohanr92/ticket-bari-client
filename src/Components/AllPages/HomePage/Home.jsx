@@ -8,6 +8,9 @@ import Latest from './Latest/Latest';
 import Process from './Process/Process';
 import PopularRoutes from './PopularRoutes/PopularRoutes';
 import Testimonial from './Testimonial/Testimonial';
+import Choose from './Choose';
+import Blog from './Blog/Blog';
+
 
 
 const Home = () => {
@@ -19,9 +22,12 @@ const Home = () => {
             <Sponsored></Sponsored>
             <BeVendor></BeVendor>
             <Latest></Latest>
+            <Choose></Choose>
             <Process></Process>
-            <PopularRoutes></PopularRoutes>
             <Testimonial></Testimonial>
+            <PopularRoutes></PopularRoutes>
+            <Blog></Blog>
+            
         </div>
     );
 };
