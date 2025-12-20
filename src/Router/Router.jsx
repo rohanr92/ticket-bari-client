@@ -12,6 +12,10 @@ import DashLayout from '../layout/DashLayout';
 import Profile from '../Components/Backend/Profile/Profile';
 import BookedTickets from '../Components/Backend/BookedTickets/BookedTickets';
 import Transaction from '../Components/Backend/Transaction History/Transaction';
+import AddTicket from '../Components/Backend/AddTicket/AddTicket';
+import AddedTickets from '../Components/Backend/AddedTickets/AddedTickets';
+import RequestedBooking from '../Components/Backend/RequestedBookings/RequestedBooking';
+import Revenue from '../Components/Backend/Revenue/Revenue';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +63,22 @@ const router = createBrowserRouter([
    {
     path: 'transaction-history',
     element: <Transaction></Transaction>,
+   },
+   {
+    path: 'add-ticket',
+    element: <AddTicket></AddTicket>
+   },
+   {
+    path: 'added-tickets',
+    element: <AddedTickets></AddedTickets>
+   },
+   {
+    path: 'requested-bookings',
+    element: <RequestedBooking></RequestedBooking>
+   },
+   {
+    path: 'revenue',
+    element: <Revenue></Revenue>
    }
     ]
   }

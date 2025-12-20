@@ -38,7 +38,7 @@ const Navbar = () => {
                         </ul>
                     </details>
                 </li>
-                <li><a>Dashboard</a></li>
+                <li><Link to='/dashboard/profile'>Dashboard</Link></li>
 
             </>
         )}
@@ -82,7 +82,7 @@ const Navbar = () => {
                     <div className="navbar-end md:space-x-3">
                         {/* <Link className="text-[16px] font-medium">+1800900122</Link> */}
                         {user ? <>
-                             <Link to='/auth/be-a-vendor' className="btn bg-black text-white font-medium text-[16]">Be A Vendor</Link>
+                            <Link to='/auth/be-a-vendor' className="btn bg-black text-white font-medium text-[16]">Be A Vendor</Link>
 
 
                             <img src={user?.photoURL} alt="" height={50} width={50}
@@ -94,7 +94,7 @@ const Navbar = () => {
                             {open && (
                                 <div className="absolute right-0 top-14 bg-base-100 w-40 rounded-box shadow-lg z-50">
                                     <ul className="menu p-2">
-                                        <li><Link to="/profile">My Profile</Link></li>
+                                        <li><Link to="dashboard/profile">My Profile</Link></li>
                                         <li><Link to="/dashboard">Dashboard</Link></li>
                                         <li>
                                             <button onClick={handleSignOut} className="text-red-500">
@@ -110,8 +110,8 @@ const Navbar = () => {
                         </> : <>
                             <Link to='/sign-in' className="text-[16px] text-black underline font-medium">Sign In</Link>
                             <Link to='/sign-up' className="btn bg-none border-[1px] font-medium text-black text-[16px] border-black">Sign Up</Link>
-                             <Link to='/be-a-vendor' className="btn bg-black text-white font-medium text-[16]">Be A Vendor</Link>
-                           
+                            <Link to='/be-a-vendor' className="btn bg-black text-white font-medium text-[16]">Be A Vendor</Link>
+
 
 
                         </>}
