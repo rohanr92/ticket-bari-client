@@ -7,6 +7,11 @@ import AuthLayout from '../layout/AuthLayout';
 import Login from '../Components/LogSysytem/Login/Login';
 import SignUp from '../Components/LogSysytem/SignUp/SignUp';
 import ForgotPassword from '../Components/LogSysytem/ForgotPass/ForgotPassword';
+import VendorSign from '../Components/LogSysytem/VendorLogin/VendorSign';
+import DashLayout from '../layout/DashLayout';
+import Profile from '../Components/Backend/Profile/Profile';
+import BookedTickets from '../Components/Backend/BookedTickets/BookedTickets';
+import Transaction from '../Components/Backend/Transaction History/Transaction';
 
 const router = createBrowserRouter([
   {
@@ -21,18 +26,40 @@ const router = createBrowserRouter([
     Component: AuthLayout,
     children: [
    {
-    path: '/auth/sign-in',
+    path: 'sign-in',
     element: <Login></Login>
    },
    {
 
-    path: '/auth/sign-up',
+    path: 'sign-up',
     element: <SignUp></SignUp>
    },
    {
-    path: '/auth/forgot-pass',
+    path: 'forgot-pass',
     Component: ForgotPassword
    },
+   {
+    path: 'be-a-vendor',
+    element: <VendorSign></VendorSign>,
+   }
+    ]
+  },
+    {
+    path: '/dashboard',
+    Component: DashLayout,
+    children: [
+   {
+    path: 'profile',
+    element: <Profile></Profile>,
+   },
+   {
+    path: 'booked-tickets',
+    element: <BookedTickets></BookedTickets>,
+   },
+   {
+    path: 'transaction-history',
+    element: <Transaction></Transaction>,
+   }
     ]
   }
 ]);

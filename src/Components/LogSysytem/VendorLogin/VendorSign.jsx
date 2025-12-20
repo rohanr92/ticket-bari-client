@@ -8,9 +8,7 @@ import { AuthContext } from '../../Provider/AuthContext';
 import { useForm } from "react-hook-form"
 import axios from 'axios';
 
-
-const SignUp = () => {
-
+const VendorSign = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const [firebaseError, setFirebaseError] = useState("");
     const [submitting, setSubmitting] = useState(false);
@@ -106,18 +104,7 @@ const SignUp = () => {
 
 
 
-    const handleGoogleLogin = () => {
-        googleLogin()
-            .then((result) => {
 
-                const user = result.user;
-                console.log(user);
-
-            }).catch((error) => {
-
-            });
-
-    }
     // if (loading) {
     //     return <p>loading....</p>
     // }
@@ -132,7 +119,7 @@ const SignUp = () => {
                     <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-md">
 
                         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-                            Create Your Account
+                            Vendor Form
                         </h2>
 
                         <form onSubmit={handleSubmit(handleSimpleReg)}>
@@ -200,19 +187,15 @@ const SignUp = () => {
 
                             {/* PASSWORD */}
                             <div className="mb-4">
-                                <label className="text-gray-700 font-medium">Password</label>
+                                <label className="text-gray-700 font-medium">NID Number</label>
                                 <input
-                                    {...register("password", {
-                                        required: "Password is required",
-                                        minLength: { value: 8, message: "Password must be at least 8 characters long" },
-                                        pattern: {
-                                            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]+$/,
-                                            message: "Password must include uppercase, lowercase, number, and special character",
-                                        },
+                                    {...register("NID", {
+                                        required: "NID is required",
+                                        
                                     })}
-                                    type="password"
+                                    type="text"
                                     className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-400"
-                                    placeholder="Enter password"
+                                    placeholder="Enter NID number"
                                 />
                                 {errors.password && (
                                     <p className="text-red-500 text-sm">{errors.password.message}</p>
@@ -229,24 +212,12 @@ const SignUp = () => {
                                 disabled={submitting}
                                 className={`w-full py-3 text-white font-semibold rounded-xl ${submitting ? 'bg-gray-400' : 'bg-black hover:bg-indigo-700'}`}
                             >
-                                {submitting ? 'Signing Up...' : 'Sign Up'}
+                                {submitting ? 'Creating...' : 'Create Vendor Account'}
                             </button>
 
                         </form>
 
-                        {/* Divider */}
-                        <div className="flex items-center my-6">
-                            <div className="flex-grow border-t border-gray-300"></div>
-                            <span className="mx-3 text-gray-500">or</span>
-                            <div className="flex-grow border-t border-gray-300"></div>
-                        </div>
-
-                        {/* GOOGLE LOGIN */}
-                        <button onClick={handleGoogleLogin} className="w-full py-3 border border-gray-300 rounded-xl flex items-center justify-center gap-3 hover:bg-gray-50 transition">
-                            <FcGoogle size={26} />
-                            <span className="font-medium text-gray-700">Sign Up with Google</span>
-                        </button>
-
+                        
                     </div>
                 </div>
 
@@ -264,4 +235,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default VendorSign;
