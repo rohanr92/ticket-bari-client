@@ -1,16 +1,14 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBpl45LYE0TklR2T64dRdxNHwxa1END8fQ",
-  authDomain: "ticketbari---c.firebaseapp.com",
-  projectId: "ticketbari---c",
-  storageBucket: "ticketbari---c.firebasestorage.app",
-  messagingSenderId: "614964643592",
-  appId: "1:614964643592:web:6dc038d8fdab5a57138ebd"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
-
 const app = initializeApp(firebaseConfig);
-
 
 export default app;

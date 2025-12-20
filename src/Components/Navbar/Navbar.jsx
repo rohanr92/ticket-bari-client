@@ -108,9 +108,9 @@ const Navbar = () => {
 
 
                         </> : <>
-                            <Link to='/sign-in' className="text-[16px] text-black underline font-medium">Sign In</Link>
-                            <Link to='/sign-up' className="btn bg-none border-[1px] font-medium text-black text-[16px] border-black">Sign Up</Link>
-                            <Link to='/be-a-vendor' className="btn bg-black text-white font-medium text-[16]">Be A Vendor</Link>
+                            <Link to='/auth/sign-in' className="text-[16px] text-black underline font-medium">Sign In</Link>
+                            <Link to='/auth/sign-up' className="btn bg-none border-[1px] font-medium text-black text-[16px] border-black">Sign Up</Link>
+                            <Link to='/auth/be-a-vendor' className="btn bg-black text-white font-medium text-[16]">Be A Vendor</Link>
 
 
 
