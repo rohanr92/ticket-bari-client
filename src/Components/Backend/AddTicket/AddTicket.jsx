@@ -16,7 +16,7 @@ const AddTicket = () => {
         if (!user?.email) return;
 
         axios
-            .get(`http://localhost:3000/users-coll?email=${user.email}`)
+            .get(`https://go-ticket-server.vercel.app/users-coll?email=${user.email}`)
             .then((response) => {
                 const userData = response.data[0];
                 setData(userData);
@@ -75,7 +75,7 @@ const AddTicket = () => {
 
             console.log("Ticket Data:", ticketData);
 
-            axios.post('http://localhost:3000/ticket-coll', ticketData)
+            axios.post('https://go-ticket-server.vercel.app/ticket-coll', ticketData)
                 .then(res => {
                     console.log("User saved to DB:", res.data);
                     alert('Account Created Successfully');

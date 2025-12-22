@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import Container from '../../../Container/Container';
 import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router';
 import luxeLogo from '../../../../assets/LUXRIDE.png';
 import carImage from '../../../../assets/car-1-min2.png';
 
 const Banner = () => {
+  const navigate = useNavigate(); // ✅ ADDED
+
   const { data: districts = [], isLoading, error } = useQuery({
     queryKey: ['districts'],
     queryFn: () => fetch('/district.json').then(res => res.json()),
@@ -14,15 +17,20 @@ const Banner = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const from = e.target.departureStart.value;
     const to = e.target.departureEnd.value;
     const date = e.target.date.value;
-    const time = e.target.time.value;
-    console.log('From:', from, 'To:', to, 'Date:', date, 'Time:', time);
+
+   
+    navigate(
+      `/all-tickets?fromLocation=${from}&toLocation=${to}&departureDate=${date}`
+    );
   };
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading districts</div>;
+
 
   return (
     <div className='bg-[#fdeeec82] bg-no-repeat bg-bottom bg-contain text-center relative md:h-[680px] pt-20 pb-10 md:p-20 md:flex justify-center px-10 mb-60'

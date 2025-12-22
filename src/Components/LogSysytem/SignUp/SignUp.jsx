@@ -77,7 +77,7 @@ const SignUp = () => {
                                 };
 
                                 axios
-                                    .post('http://localhost:3000/users-coll', newUser)
+                                    .post('https://go-ticket-server.vercel.app/users-coll', newUser)
                                     .then(res => {
                                         console.log("User saved to DB:", res.data);
 
@@ -146,7 +146,7 @@ const SignUp = () => {
 
 
                                  axios
-                                    .post('http://localhost:3000/users-coll', newUser)
+                                    .post('https://go-ticket-server.vercel.app/users-coll', newUser)
                                     .then(res => {
                                         console.log("User saved to DB:", res.data);
                                         alert('Account Created Successfully');

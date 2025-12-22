@@ -30,21 +30,15 @@ const Navbar = () => {
         {user && (
             <>
                 <li>
-                    <details>
-                        <summary>All Tickets</summary>
-                        <ul className="p-2 bg-base-100 w-40 z-1">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </details>
+    <Link to='/all-tickets'>All Tickets</Link>
                 </li>
-                <li><Link to='/dashboard/profile'>Dashboard</Link></li>
+                <li><Link to='/dashboard/overview'>Dashboard</Link></li>
 
             </>
         )}
 
-        <li><a>About Us</a></li>
-        <li><a>Contact Us</a></li>
+        <li><Link to='/about-us'>About Us</Link></li>
+        <li><Link to='/contact us'>Contact Us</Link></li>
 
 
     </>
@@ -95,7 +89,7 @@ const Navbar = () => {
                                 <div className="absolute right-0 top-14 bg-base-100 w-40 rounded-box shadow-lg z-50">
                                     <ul className="menu p-2">
                                         <li><Link to="dashboard/profile">My Profile</Link></li>
-                                        <li><Link to="/dashboard">Dashboard</Link></li>
+                                        <li><Link to="/dashboard/overview">Dashboard</Link></li>
                                         <li>
                                             <button onClick={handleSignOut} className="text-red-500">
                                                 Logout

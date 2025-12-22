@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaCheckCircle } from "react-icons/fa";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 
 const AllTickets = () => {
   const [tickets, setTickets] = useState([]);
@@ -8,32 +8,42 @@ const AllTickets = () => {
   const [to, setTo] = useState("");
   const [date, setDate] = useState("");
 
-  // Load approved tickets on page load
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams(); 
+
+ 
   useEffect(() => {
-    fetch("http://localhost:3000/ticket-coll")
+    const fromQ = searchParams.get("fromLocation") || "";
+    const toQ = searchParams.get("toLocation") || "";
+    const dateQ = searchParams.get("departureDate") || "";
+
+    setFrom(fromQ);
+    setTo(toQ);
+    setDate(dateQ);
+
+    const params = new URLSearchParams();
+    if (fromQ) params.append("fromLocation", fromQ);
+    if (toQ) params.append("toLocation", toQ);
+    if (dateQ) params.append("departureDate", dateQ);
+
+    fetch(`https://go-ticket-server.vercel.app/ticket-coll?${params.toString()}`)
       .then(res => res.json())
       .then(data => setTickets(data))
       .catch(err => console.error(err));
-  }, []);
+  }, [searchParams]);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const params = new URLSearchParams();
-    if (from) params.append("fromLocation", from);
-    if (to) params.append("toLocation", to);
-    if (date) params.append("departureDate", date);
 
-    fetch(`http://localhost:3000/ticket-coll?${params.toString()}`)
-      .then(res => res.json())
-      .then(data => setTickets(data))
-      .catch(err => console.error(err));
+    // ✅ ADDED: update URL (NOT redesign)
+    navigate(
+      `/all-tickets?fromLocation=${from}&toLocation=${to}&departureDate=${date}`
+    );
   };
 
-const navigate = useNavigate();
-
   const handleSeeDetails = (id) => {
-  navigate(`/all-tickets/${id}`);
-};
+    navigate(`/all-tickets/${id}`);
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">

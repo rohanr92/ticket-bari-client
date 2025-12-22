@@ -22,7 +22,7 @@ const Sidebar = () => {
     if (!user?.email) return;
 
     axios
-      .get(`http://localhost:3000/users-coll?email=${user.email}`)
+      .get(`https://go-ticket-server.vercel.app/users-coll?email=${user.email}`)
       .then(res => {
         setData(res.data[0]);
       })

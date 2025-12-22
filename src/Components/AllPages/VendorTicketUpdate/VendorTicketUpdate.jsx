@@ -44,13 +44,13 @@ const VendorTicketUpdate = () => {
     console.log("Updated Ticket:", updatedTicket);
 
     // 🔴 PATCH later
-    // fetch(`http://localhost:3000/ticket-coll/${id}`, {
+    // fetch(`https://go-ticket-server.vercel.app/ticket-coll/${id}`, {
     //   method: "PATCH",
     //   headers: { "Content-Type": "application/json" },
     //   body: JSON.stringify(updatedTicket),
     // });
 
-   axios.patch(`http://localhost:3000/ticket-coll/${id}`, updatedTicket)
+   axios.patch(`https://go-ticket-server.vercel.app/ticket-coll/${id}`, updatedTicket)
   .then(res => {
     console.log(res.data);
     alert("Successfully Updated");

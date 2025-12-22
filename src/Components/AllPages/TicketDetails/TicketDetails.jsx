@@ -54,7 +54,7 @@ const TicketDetails = () => {
 
         console.log("Booking Data:", booking);
 
-        axios.post('http://localhost:3000/booking-ticket', booking)
+        axios.post('https://go-ticket-server.vercel.app/booking-ticket', booking)
             .then(res => {
                 console.log("User saved to DB:", res.data);
                 alert(`Successfully booked ${quantity} ticket(s) for ${ticket.title}!`);

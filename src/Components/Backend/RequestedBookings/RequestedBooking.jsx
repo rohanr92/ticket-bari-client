@@ -12,7 +12,7 @@ const RequestedBooking = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:3000/booking-ticket-pending?email=${vendorEmail}`
+        `https://go-ticket-server.vercel.app/booking-ticket-pending?email=${vendorEmail}`
       )
       .then((res) => {
         setBookings(res.data);
@@ -39,7 +39,7 @@ const handleAction = (id, action) => {
 
       axios
         .patch(
-          `http://localhost:3000/booking-ticket-pending/${id}`,
+          `https://go-ticket-server.vercel.app/booking-ticket-pending/${id}`,
           { bookingStatus: status }   // ✅ OBJECT
         )
         .then((res) => {

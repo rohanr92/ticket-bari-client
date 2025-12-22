@@ -22,6 +22,8 @@ import VendorTicketUpdate from '../Components/AllPages/VendorTicketUpdate/Vendor
 import Overview from '../Components/Backend/Overview/Overview';
 import ManageTickets from '../Components/Backend/ManageTickets/manageTickets';
 import ManageUsers from '../Components/Backend/ManageUsers/manageUsers';
+import AboutUs from '../Components/AllPages/AboutUs/AboutUs';
+import ContactUs from '../Components/AllPages/Contact/ContactUs';
 
 const router = createBrowserRouter([
   {
@@ -31,14 +33,22 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       {
       path: 'all-tickets', 
-      loader: () => fetch('http://localhost:3000/ticket-coll'),
+      loader: () => fetch('https://go-ticket-server.vercel.app/ticket-coll'),
       element: <AllTickets></AllTickets>
     },
     {
       path: 'all-tickets/:id',
-       loader: ({ params }) => fetch(`http://localhost:3000/ticket-coll/${params.id}`),
+       loader: ({ params }) => fetch(`https://go-ticket-server.vercel.app/ticket-coll/${params.id}`),
        element: <TicketDetails></TicketDetails>
     },
+    {
+      path: 'about-us',
+      Component: AboutUs
+    },
+    {
+      path: 'contact-us',
+      Component: ContactUs
+    }
    
     ],
   },
@@ -101,7 +111,7 @@ const router = createBrowserRouter([
    },
    {
     path: 'update-tickets/:id',
-    loader: ({ params }) => fetch(`http://localhost:3000/ticket-coll/${params.id}`),
+    loader: ({ params }) => fetch(`https://go-ticket-server.vercel.app/ticket-coll/${params.id}`),
     element: <VendorTicketUpdate></VendorTicketUpdate>
 
    },

@@ -11,7 +11,7 @@ const BookedTickets = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`http://localhost:3000/booking-ticket?email=${user.email}`)
+    fetch(`https://go-ticket-server.vercel.app/booking-ticket?email=${user.email}`)
       .then(res => res.json())
       .then(data => {
         setBookings(data);

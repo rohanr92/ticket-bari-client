@@ -9,7 +9,7 @@ const ManageTickets = () => {
   // 🔹 Fetch pending tickets
   useEffect(() => {
     axios
-      .get("http://localhost:3000/ticket-coll-pending")
+      .get("https://go-ticket-server.vercel.app/ticket-coll-pending")
       .then((res) => {
         setTickets(res.data);
         setLoading(false);
@@ -37,7 +37,7 @@ verificationStatus: 'approved'
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .patch(`http://localhost:3000/ticket-coll/${id}`, updatedTicket)
+          .patch(`https://go-ticket-server.vercel.app/ticket-coll/${id}`, updatedTicket)
           .then(() => {
             Swal.fire("Approved!", "Ticket is now live.", "success");
 
@@ -64,7 +64,7 @@ verificationStatus: 'rejected'
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .patch(`http://localhost:3000/ticket-coll/${id}`, updatedTicket)
+          .patch(`https://go-ticket-server.vercel.app/ticket-coll/${id}`, updatedTicket)
           .then(() => {
             Swal.fire("Rejected!", "Ticket has been rejected.", "success");
 
