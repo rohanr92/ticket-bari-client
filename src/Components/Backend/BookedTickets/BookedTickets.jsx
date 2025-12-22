@@ -46,7 +46,7 @@ const BookedTickets = () => {
         {bookings.map((booking) => {
           const departureDateTime = new Date(`${booking.departuresDate}T${booking.departuresTime}:00`);
           const now = new Date();
-          const canPay = departureDateTime > now && booking.bookingStatus === "accepted";
+          const canPay = departureDateTime > now && booking.bookingStatus === "approved";
 
           return (
             <div key={booking._id} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">

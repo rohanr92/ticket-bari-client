@@ -6,7 +6,7 @@ const RequestedBooking = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔹 Replace with logged-in vendor email later
+  
   const vendorEmail = "shellathemesupport@gmail.com";
 
   useEffect(() => {
@@ -24,30 +24,44 @@ const RequestedBooking = () => {
       });
   }, []);
 
-  // 🔹 Accept / Reject handler (UI only for now)
-  const handleAction = (id, action) => {
-    Swal.fire({
-      title: `Are you sure?`,
-      text: `You want to ${action} this booking`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // 🔄 later → PATCH bookingStatus
-        Swal.fire(
-          "Success",
-          `Booking ${action}ed successfully`,
-          "success"
-        );
+const handleAction = (id, action) => {
+  const status =
+    action === "accept" ? "approved" : "rejected";
 
-        // 🔄 Remove from UI
-        setBookings((prev) =>
-          prev.filter((booking) => booking._id !== id)
-        );
-      }
-    });
-  };
+  Swal.fire({
+    title: "Are you sure?",
+    text: `You want to ${action} this booking`,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes",
+  }).then((result) => {
+    if (result.isConfirmed) {
+
+      axios
+        .patch(
+          `http://localhost:3000/booking-ticket-pending/${id}`,
+          { bookingStatus: status }   // ✅ OBJECT
+        )
+        .then((res) => {
+          Swal.fire(
+            "Success",
+            `Booking ${status} successfully`,
+            "success"
+          );
+
+          // 🔄 Remove from UI
+          setBookings((prev) =>
+            prev.filter((booking) => booking._id !== id)
+          );
+        })
+        .catch((err) => {
+          console.error(err);
+          Swal.fire("Error", "Update failed", "error");
+        });
+    }
+  });
+};
+
 
   if (loading) {
     return (
