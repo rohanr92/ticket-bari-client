@@ -85,9 +85,9 @@ const Navbar = () => {
                             <Link to='/auth/be-a-vendor' className="btn bg-black text-white font-medium text-[16]">Be A Vendor</Link>
 
 
-                            <img src={user?.photoURL} alt="" height={50} width={50}
+                            <img src={user?.photoURL} alt="" 
                                 onClick={() => setOpen(!open)}
-                                className='rounded-4xl cursor-pointer' />
+                                className='rounded-4xl object-cover cursor-pointer h-[50px] w-[50px]' />
 
 
                             {/* Dropdown */}

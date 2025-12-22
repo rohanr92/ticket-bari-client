@@ -22,7 +22,8 @@ const Profile = () => {
                     <img
                         src={user.photoURL}
                         alt="User Avatar"
-                        className="w-28 h-28 rounded-full border-4 border-[#e9553f]"
+                        
+                        className="object-cover w-28 h-28 rounded-full border-4 border-[#e9553f]"
                     />
                 ) : (
                     <FaUserCircle className="w-28 h-28 text-[#e9553f]" />

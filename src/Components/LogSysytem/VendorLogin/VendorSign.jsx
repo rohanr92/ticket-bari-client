@@ -13,7 +13,8 @@ const VendorSign = () => {
     const [firebaseError, setFirebaseError] = useState("");
     const [submitting, setSubmitting] = useState(false);
 
-    const { loading, googleLogin, user, setUser, createUser, updatedProfile } = useContext(AuthContext);
+
+    const { loading, googleLogin, user, setUser, createUser, updatedProfile, } = useContext(AuthContext);
 
     // const [image, setImage] = useState(null);
     // const [imageName, setImageName] = useState("No file selected");
@@ -31,75 +32,49 @@ const VendorSign = () => {
     // };
 
 
-    const handleSimpleReg = (data) => {
-        setFirebaseError("");
-        setSubmitting(true);
+    const handleSimpleReg = async (data) => {
+        try {
+            setSubmitting(true);
+            setFirebaseError("");
 
+           
+            const imageFile = data.profilePhoto[0];
+            const imgbbURL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`;
 
+            const formData = new FormData();
+            formData.append("image", imageFile);
 
-        createUser(data.email, data.password)
-            .then((userCredential) => {
-                const users = userCredential.user;
-                setUser(users);
-                console.log("Firebase user object:", users);
+            const imgRes = await axios.post(imgbbURL, formData);
+            const imageUrl = imgRes.data.data.url;
 
-                const imageFile = data.profilePhoto[0];
+            
+            await updatedProfile(data.fullName, imageUrl);
 
-                const imagBB = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`
-
-                const formData = new FormData();
-                formData.append("image", imageFile);
-                axios.post(imagBB, formData)
-                    .then(res => {
-                        const imageUrl = res.data.data.url;
-                        console.log("ImgBB Image URL:", imageUrl);
-
-                        // const newUpdateProfile = {
-                        //     displayName: data.fullName,
-                        //     photoURL: imageUrl
-                        // }
-
-                        updatedProfile(data.fullName, imageUrl)
-                            .then(() => {
-                                console.log("Profile updated successfully");
-
-
-
-                                setUser({
-                                    ...users,
-                                    displayName: data.fullName,
-                                    photoURL: imageUrl
-                                });
-
-                            }).catch((error) => {
-                                console.error("Profile update error:", error);
-                            });
-
-                            alert('Account Create SuccessFully')
-
-
-
-
-                        // now you can save imageUrl to Firebase profile / DB
-                    })
-                    .catch(err => {
-                        console.error("ImgBB upload error:", err);
-                    });
-
-
-
-
-            })
-            .catch((error) => {
-                console.log("Error creating user:", error.code, error.message);
-                setFirebaseError(error.message);
-            })
-            .finally(() => {
-                setSubmitting(false);
+            
+            await axios.patch(`http://localhost:3000/users-coll/${user.email}`, {
+                
+                displayName: data.fullName,
+                photoURL: imageUrl,
+                updatedAt: new Date(),
+                role: 'vendor'
             });
-        console.log(data);
-    };
 
+           
+            setUser({
+                ...user,
+                displayName: data.fullName,
+                photoURL: imageUrl
+            });
+
+            alert("Vendor Profile Created successfully ✅");
+
+        } catch (error) {
+            console.error(error);
+            setFirebaseError(error.message);
+        } finally {
+            setSubmitting(false);
+        }
+    };
 
 
 
@@ -130,7 +105,7 @@ const VendorSign = () => {
                                 <input
                                     type="text"
                                     className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-400"
-                                    placeholder="Enter full name"
+                                    value={user?.displayName}
                                     {...register("fullName", { required: 'Full name is required', maxLength: 20 })}
                                 />
                             </div>
@@ -142,7 +117,7 @@ const VendorSign = () => {
                                     {...register("email", { required: true })}
                                     type="email"
                                     className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-400"
-                                    placeholder="Enter email"
+                                    value={user?.email}
                                 />
                                 {errors.email && (
                                     <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -191,7 +166,7 @@ const VendorSign = () => {
                                 <input
                                     {...register("NID", {
                                         required: "NID is required",
-                                        
+
                                     })}
                                     type="text"
                                     className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-400"
@@ -217,7 +192,7 @@ const VendorSign = () => {
 
                         </form>
 
-                        
+
                     </div>
                 </div>
 

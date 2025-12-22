@@ -6,7 +6,7 @@ import Container from '../Components/Container/Container';
 
 const DashLayout = () => {
   return (
-    <Container>
+   
     <div className="drawer lg:drawer-open min-h-screen">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
 
@@ -33,7 +33,7 @@ const DashLayout = () => {
         <Sidebar />
       </div>
     </div>
-    </Container>
+   
   );
 };
 

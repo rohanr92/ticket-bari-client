@@ -56,31 +56,48 @@ const SignUp = () => {
                         const imageUrl = res.data.data.url;
                         console.log("ImgBB Image URL:", imageUrl);
 
-                        // const newUpdateProfile = {
-                        //     displayName: data.fullName,
-                        //     photoURL: imageUrl
-                        // }
+                        const newUser = {
+                            displayName: data.fullName,
+                            email: data.email,
+                            photoURL: imageUrl,
+                            role: "user",
+                            emailVerified: data.emailVerified
+                        }
 
                         updatedProfile(data.fullName, imageUrl)
                             .then(() => {
-                                console.log("Profile updated successfully");
 
-
-
-                                setUser({
-                                    ...users,
+                                const newUser = {
                                     displayName: data.fullName,
-                                    photoURL: imageUrl
-                                });
+                                    email: data.email,
+                                    photoURL: imageUrl,
+                                    role: "user",
+                                    emailVerified: users.emailVerified,
+                                    createdAt: new Date()
+                                };
 
-                            }).catch((error) => {
+                                axios
+                                    .post('http://localhost:3000/users-coll', newUser)
+                                    .then(res => {
+                                        console.log("User saved to DB:", res.data);
+
+                                        setUser({
+                                            ...users,
+                                            displayName: data.fullName,
+                                            photoURL: imageUrl
+                                        });
+
+                                        alert('Account Created Successfully');
+                                    })
+                                    .catch(dbError => {
+                                        console.error("DB save error:", dbError);
+                                        alert("Account created, but database save failed");
+                                    });
+
+                            })
+                            .catch(error => {
                                 console.error("Profile update error:", error);
                             });
-
-                            alert('Account Create SuccessFully')
-
-
-
 
                         // now you can save imageUrl to Firebase profile / DB
                     })
@@ -112,6 +129,38 @@ const SignUp = () => {
 
                 const user = result.user;
                 console.log(user);
+
+
+                 const newUser = {
+                                    displayName: user.displayName,
+                                    email: user.email,
+                                    photoURL: user.photoURL,
+                                    role: "user",
+                                    emailVerified: user.emailVerified,
+                                    createdAt: new Date()
+                                };
+
+
+                                console.log(newUser);
+
+
+
+                                 axios
+                                    .post('http://localhost:3000/users-coll', newUser)
+                                    .then(res => {
+                                        console.log("User saved to DB:", res.data);
+                                        alert('Account Created Successfully');
+                                    })
+                                    .catch(error => {
+                                        console.error("DB save error:", error);
+                                    });
+                                
+                
+
+
+                
+
+
 
             }).catch((error) => {
 
