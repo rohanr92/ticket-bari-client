@@ -48,7 +48,8 @@ const TicketDetails = () => {
             bookingStatus: 'pending',
             departuresDate: ticket.departureDate,
             departuresTime: ticket.departureTime,
-            imageUrl: ticket.image
+            imageUrl: ticket.image,
+            paymentStatus: 'pending'
 
         };
 

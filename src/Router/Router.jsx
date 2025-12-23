@@ -26,6 +26,7 @@ import AboutUs from '../Components/AllPages/AboutUs/AboutUs';
 import ContactUs from '../Components/AllPages/Contact/ContactUs';
 import PrivateRoute from '../Components/PrivateRoute/PrivateRoute';
 import PaymentSuccess from '../Components/Backend/PaymentSuccess/PaymentSuccess';
+import PaymentCancel from '../Components/PaymentCancel/PaymentCancel';
 
 const router = createBrowserRouter([
   {
@@ -132,6 +133,10 @@ const router = createBrowserRouter([
    {
     path: 'payment-success',
     element: <PaymentSuccess></PaymentSuccess>
+   },
+   {
+    path: 'payment-cancel',
+    element: <PaymentCancel></PaymentCancel>
    }
    
   

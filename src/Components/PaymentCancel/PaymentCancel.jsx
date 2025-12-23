@@ -5,11 +5,11 @@ const PaymentCancel = () => {
     let navigate = useNavigate();
 
   const  handlePrevious = () => {
-        navigate('/dashboard/added-tickets')
+        navigate('/dashboard/booked-tickets')
     }
     return (
         <div>
-            <button onClick={handlePrevious}>Back To The Added Tickets</button>
+            <button onClick={handlePrevious}>Back To The Booked Tickets</button>
             
         </div>
     );

@@ -114,15 +114,30 @@ const handlePayNow = async (booking) => {
                   />
                 </div>
 
-                <button
-                  onClick={() => handlePayNow(booking)}
-                  disabled={!canPay}
-                  className={`mt-auto w-full py-2 rounded-lg text-white font-semibold transition ${
-                    canPay ? "bg-[#e9553f] hover:bg-[#d84930]" : "bg-gray-300 cursor-not-allowed"
-                  }`}
-                >
-                  Pay Now
-                </button>
+               <div className="mt-4 flex flex-col gap-2">
+  {booking.paymentStatus === "paid" ? (
+    <div className="flex justify-between items-center">
+      <span className="text-green-600 font-bold">Paid</span>
+      <button
+        onClick={() => window.open(`/print-ticket/${booking._id}`, "_blank")}
+        className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold"
+      >
+        Print Ticket
+      </button>
+    </div>
+  ) : (
+    <button
+      onClick={() => handlePayNow(booking)}
+      disabled={!canPay}
+      className={`mt-auto w-full py-2 rounded-lg text-white font-semibold transition ${
+        canPay ? "bg-[#e9553f] hover:bg-[#d84930]" : "bg-gray-300 cursor-not-allowed"
+      }`}
+    >
+      Pay Now
+    </button>
+  )}
+</div>
+
               </div>
             </div>
           );
