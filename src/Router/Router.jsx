@@ -24,6 +24,7 @@ import ManageTickets from '../Components/Backend/ManageTickets/manageTickets';
 import ManageUsers from '../Components/Backend/ManageUsers/manageUsers';
 import AboutUs from '../Components/AllPages/AboutUs/AboutUs';
 import ContactUs from '../Components/AllPages/Contact/ContactUs';
+import PrivateRoute from '../Components/PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -34,12 +35,12 @@ const router = createBrowserRouter([
       {
       path: 'all-tickets', 
       loader: () => fetch('https://go-ticket-server.vercel.app/ticket-coll'),
-      element: <AllTickets></AllTickets>
+      element: <PrivateRoute><AllTickets></AllTickets></PrivateRoute>
     },
     {
       path: 'all-tickets/:id',
        loader: ({ params }) => fetch(`https://go-ticket-server.vercel.app/ticket-coll/${params.id}`),
-       element: <TicketDetails></TicketDetails>
+       element: <PrivateRoute><TicketDetails></TicketDetails></PrivateRoute>
     },
     {
       path: 'about-us',
@@ -77,57 +78,57 @@ const router = createBrowserRouter([
   },
     {
     path: '/dashboard',
-    Component: DashLayout,
+    element: <PrivateRoute><DashLayout></DashLayout></PrivateRoute>,
     children: [
    {
     path: 'profile',
-    element: <Profile></Profile>,
+    element: <PrivateRoute><Profile></Profile></PrivateRoute>,
    },
    {
 
     path: 'overview',
-    element: <Overview></Overview>
+    element: <PrivateRoute><Overview></Overview></PrivateRoute>
    },
      {
 
     path: 'manage-Tickets',
-    element: <ManageTickets></ManageTickets>
+    element: <PrivateRoute><ManageTickets></ManageTickets></PrivateRoute>
    },
    {
     path: 'manage-users',
-    element: <ManageUsers></ManageUsers>
+    element: <PrivateRoute><ManageUsers></ManageUsers></PrivateRoute>
    },
    {
     path: 'booked-tickets',
-    element: <BookedTickets></BookedTickets>,
+    element: <PrivateRoute><BookedTickets></BookedTickets></PrivateRoute>,
    },
    {
     path: 'transaction-history',
-    element: <Transaction></Transaction>,
+    element: <PrivateRoute><Transaction></Transaction></PrivateRoute>,
    },
    {
     path: 'add-ticket',
-    element: <AddTicket></AddTicket>
+    element: <PrivateRoute><AddTicket></AddTicket></PrivateRoute>
    },
    {
     path: 'update-tickets/:id',
     loader: ({ params }) => fetch(`https://go-ticket-server.vercel.app/ticket-coll/${params.id}`),
-    element: <VendorTicketUpdate></VendorTicketUpdate>
+    element: <PrivateRoute><VendorTicketUpdate></VendorTicketUpdate></PrivateRoute>
 
    },
    {
     path: 'added-tickets',
-    element: <AddedTickets></AddedTickets>
+    element:  <PrivateRoute><AddedTickets></AddedTickets></PrivateRoute>
    },
    {
     path: 'requested-bookings',
-    element: <RequestedBooking></RequestedBooking>
+    element: <PrivateRoute><RequestedBooking></RequestedBooking></PrivateRoute>
    },
    {
     path: 'revenue',
-    element: <Revenue></Revenue>
+    element: <PrivateRoute><Revenue></Revenue></PrivateRoute>
    },
- 
+   
    
   
     ]

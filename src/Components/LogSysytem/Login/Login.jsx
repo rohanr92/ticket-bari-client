@@ -5,7 +5,7 @@ import svg from '../../../assets/ljs.json';
 import Container from '../../Container/Container';
 import { AuthContext } from '../../Provider/AuthContext';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -13,6 +13,7 @@ const Login = () => {
     const [firebaseError, setFirebaseError] = useState("");
     const [submitting, setSubmitting] = useState(false);
     const navigate = useNavigate();
+      const location = useLocation();
 
     const handleLogin = (data) => {
         setFirebaseError("");
@@ -23,7 +24,7 @@ const Login = () => {
                 const user = userCredential.user;
                 setUser(user);
                 console.log("Logged in user:", user);
-                navigate('/');
+                navigate(location?.state || '/');
                 
             })
             .catch(error => {
@@ -44,7 +45,7 @@ const Login = () => {
                 const user = result.user;
                 setUser(user);
                 console.log("Google login user:", user);
-                navigate('/');
+                navigate(location?.state || '/');
             })
             .catch(error => {
                 console.error("Google login error:", error);

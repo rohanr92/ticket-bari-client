@@ -26,12 +26,14 @@ const Navbar = () => {
 
 
     const nav = <>
-        <li><a>Home</a></li>
-        {user && (
-            <>
-                <li>
+        <li><Link to='/'>Home</Link></li>
+
+          <li>
     <Link to='/all-tickets'>All Tickets</Link>
                 </li>
+        {user && (
+            <>
+              
                 <li><Link to='/dashboard/overview'>Dashboard</Link></li>
 
             </>
@@ -60,7 +62,7 @@ const Navbar = () => {
                                 {nav}
                             </ul>
                         </div>
-                        <a className="btn btn-ghost text-xl"><img src={logo} alt="Logo" /></a>
+                        <a href='/' className="btn btn-ghost text-xl"><img src={logo} alt="Logo" /></a>
 
 
                         <div className="navbar-center hidden lg:flex">

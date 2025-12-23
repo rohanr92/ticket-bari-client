@@ -30,10 +30,34 @@ const BookedTickets = () => {
     );
   };
 
-  const handlePayNow = (booking) => {
-    alert(`Paying for ${booking.title}, Total: ৳${booking.totalPrice}`);
-    // You can integrate payment gateway here
-  };
+const handlePayNow = async (booking) => {
+  try {
+    const res = await fetch(
+      "https://go-ticket-server.vercel.app/create-checkout-session",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: booking.title,
+          totalPrice: booking.totalPrice,
+          quantity: booking.quantity,
+          userEmail: user.email,
+          imageUrl: booking.imageUrl,
+          bookingId: booking._id,
+        }),
+      }
+    );
+
+    const data = await res.json();
+
+    if (data.url) {
+      window.location.href = data.url; 
+    }
+  } catch (error) {
+    console.error("Payment error", error);
+  }
+};
+
 
   if (loading) return <p className="text-center mt-10">Loading your booked tickets...</p>;
 
