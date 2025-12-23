@@ -11,7 +11,7 @@ const BookedTickets = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`https://go-ticket-server.vercel.app/booking-ticket?email=${user.email}`)
+    fetch(`http://localhost:3000/booking-ticket?email=${user.email}`)
       .then(res => res.json())
       .then(data => {
         setBookings(data);
@@ -33,7 +33,7 @@ const BookedTickets = () => {
 const handlePayNow = async (booking) => {
   try {
     const res = await fetch(
-      "https://go-ticket-server.vercel.app/create-checkout-session",
+      "http://localhost:3000/create-checkout-session",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -51,12 +51,13 @@ const handlePayNow = async (booking) => {
     const data = await res.json();
 
     if (data.url) {
-      window.location.href = data.url; 
+      window.location.href = data.url;
     }
   } catch (error) {
     console.error("Payment error", error);
   }
 };
+
 
 
   if (loading) return <p className="text-center mt-10">Loading your booked tickets...</p>;

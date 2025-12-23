@@ -26,7 +26,7 @@ const AllTickets = () => {
     if (toQ) params.append("toLocation", toQ);
     if (dateQ) params.append("departureDate", dateQ);
 
-    fetch(`https://go-ticket-server.vercel.app/ticket-coll?${params.toString()}`)
+    fetch(`http://localhost:3000/ticket-coll?${params.toString()}`)
       .then(res => res.json())
       .then(data => setTickets(data))
       .catch(err => console.error(err));

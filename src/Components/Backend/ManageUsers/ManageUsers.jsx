@@ -9,7 +9,7 @@ const ManageUsers = () => {
     // 🔹 Fetch all users
     useEffect(() => {
         axios
-            .get("https://go-ticket-server.vercel.app/users-coll")
+            .get("http://localhost:3000/users-coll")
             .then((res) => {
                 setUsers(res.data);
                 setLoading(false);
@@ -33,7 +33,7 @@ const ManageUsers = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axios
-                    .patch(`https://go-ticket-server.vercel.app/users-coll/${id}`, { role })
+                    .patch(`http://localhost:3000/users-coll/${id}`, { role })
                     .then((res) => {
                         console.log(res.data);
 

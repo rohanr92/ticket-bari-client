@@ -25,6 +25,7 @@ import ManageUsers from '../Components/Backend/ManageUsers/manageUsers';
 import AboutUs from '../Components/AllPages/AboutUs/AboutUs';
 import ContactUs from '../Components/AllPages/Contact/ContactUs';
 import PrivateRoute from '../Components/PrivateRoute/PrivateRoute';
+import PaymentSuccess from '../Components/Backend/PaymentSuccess/PaymentSuccess';
 
 const router = createBrowserRouter([
   {
@@ -34,12 +35,12 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       {
       path: 'all-tickets', 
-      loader: () => fetch('https://go-ticket-server.vercel.app/ticket-coll'),
+      loader: () => fetch('http://localhost:3000/ticket-coll'),
       element: <PrivateRoute><AllTickets></AllTickets></PrivateRoute>
     },
     {
       path: 'all-tickets/:id',
-       loader: ({ params }) => fetch(`https://go-ticket-server.vercel.app/ticket-coll/${params.id}`),
+       loader: ({ params }) => fetch(`http://localhost:3000/ticket-coll/${params.id}`),
        element: <PrivateRoute><TicketDetails></TicketDetails></PrivateRoute>
     },
     {
@@ -112,7 +113,7 @@ const router = createBrowserRouter([
    },
    {
     path: 'update-tickets/:id',
-    loader: ({ params }) => fetch(`https://go-ticket-server.vercel.app/ticket-coll/${params.id}`),
+    loader: ({ params }) => fetch(`http://localhost:3000/ticket-coll/${params.id}`),
     element: <PrivateRoute><VendorTicketUpdate></VendorTicketUpdate></PrivateRoute>
 
    },
@@ -128,7 +129,10 @@ const router = createBrowserRouter([
     path: 'revenue',
     element: <PrivateRoute><Revenue></Revenue></PrivateRoute>
    },
-   
+   {
+    path: 'payment-success',
+    element: <PaymentSuccess></PaymentSuccess>
+   }
    
   
     ]

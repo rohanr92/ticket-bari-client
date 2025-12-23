@@ -12,7 +12,7 @@ const AddedTickets = () => {
         if (!user?.email) return;
 
         axios
-            .get(`https://go-ticket-server.vercel.app/user-ticket-coll?email=${user.email}`)
+            .get(`http://localhost:3000/user-ticket-coll?email=${user.email}`)
             .then(res => {
                 setTickets(res.data);
             });
@@ -37,7 +37,7 @@ const handleDelete = (id) => {
   }).then((result) => {
     if (result.isConfirmed) {
       axios
-        .delete(`https://go-ticket-server.vercel.app/ticket-coll/${id}`)
+        .delete(`http://localhost:3000/ticket-coll/${id}`)
         .then((res) => {
           if (res.data.deletedCount > 0) {
            

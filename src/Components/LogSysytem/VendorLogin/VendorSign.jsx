@@ -51,7 +51,7 @@ const VendorSign = () => {
             await updatedProfile(data.fullName, imageUrl);
 
             
-            await axios.patch(`https://go-ticket-server.vercel.app/users-coll/${user.email}`, {
+            await axios.patch(`http://localhost:3000/users-coll/${user.email}`, {
                 
                 displayName: data.fullName,
                 photoURL: imageUrl,
