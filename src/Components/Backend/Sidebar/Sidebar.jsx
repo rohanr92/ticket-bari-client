@@ -79,6 +79,10 @@ const Sidebar = () => {
   <GiOverdose className="text-xl" />
   <span className="text-sm">Manage Users</span>
 </NavLink>
+        <NavLink to="/dashboard/advertise-products" end className={linkClass}>
+  <GiOverdose className="text-xl" />
+  <span className="text-sm">Advertise Products</span>
+</NavLink>
 
 
         </>

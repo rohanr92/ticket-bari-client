@@ -27,6 +27,7 @@ import ContactUs from '../Components/AllPages/Contact/ContactUs';
 import PrivateRoute from '../Components/PrivateRoute/PrivateRoute';
 import PaymentSuccess from '../Components/Backend/PaymentSuccess/PaymentSuccess';
 import PaymentCancel from '../Components/PaymentCancel/PaymentCancel';
+import AdvertiseTickets from '../Components/Backend/ AdvertiseTickets  / AdvertiseTickets ';
 
 const router = createBrowserRouter([
   {
@@ -137,9 +138,12 @@ const router = createBrowserRouter([
    {
     path: 'payment-cancel',
     element: <PaymentCancel></PaymentCancel>
-   }
+   },
+   {
+   path: 'advertise-products',
+   element: <PrivateRoute><AdvertiseTickets></AdvertiseTickets></PrivateRoute>
+  }
    
-  
     ]
   }
 ]);
