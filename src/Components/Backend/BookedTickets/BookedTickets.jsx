@@ -7,6 +7,8 @@ const BookedTickets = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+ 
+  
 
   useEffect(() => {
     if (!user?.email) return;
@@ -29,6 +31,7 @@ const BookedTickets = () => {
       <span className="text-gray-700 font-semibold">{days}d {hours}h {minutes}m {seconds}s</span>
     );
   };
+   console.log(bookings);
 
 const handlePayNow = async (booking) => {
   try {
@@ -44,6 +47,7 @@ const handlePayNow = async (booking) => {
           userEmail: user.email,
           imageUrl: booking.imageUrl,
           bookingId: booking._id,
+          vendorEmail: booking.vendorsEmail,
         }),
       }
     );
